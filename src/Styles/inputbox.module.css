@@ -1,0 +1,48 @@
+.navbar {
+  display: flex;
+  color: white;
+  padding-left: 20px;
+  height: 80px;
+  align-items: center;
+  gap: 25px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  margin-bottom: 10px;
+  background: white;
+}
+
+.inputBox {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 5px;
+  top: 22%;
+  font-size: 19px;
+  color: rgb(84, 95, 112);
+}
+
+.domainInput {
+  width: 333px;
+  height: 36px;
+  padding-left: 25px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 2px solid lightgrey;
+  outline: none;
+}
+
+.domainInput:focus {
+  border-color: grey;
+}
+
+.searchButton {
+  background-color: rgb(237, 229, 255);
+  height: 38px;
+  border: none;
+  width: 200px;
+  color: rgb(115, 52, 219);
+  font-size: large;
+  border-radius: 6px;
+  cursor: pointer;
+}
