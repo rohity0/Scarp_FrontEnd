@@ -7,7 +7,7 @@ export const Cards = ({ company, onCheckboxChange }) => {
     const handleChange = (e) => {
         onCheckboxChange(company._id, e.target.checked);
     };
-    D: \Projects\Frontend_Scraper\scrapper
+   
     return (
         <>
             <div className={styles.tableRow}>
