@@ -75,7 +75,7 @@ export const WebSitePage = () => {
                         <FaCamera />  Screenshot of Webpage
                     </h4>
 
-                    <img src={company.screenshotPath ? `https://scraper-backend-14fb.onrender.com/image/${company.screenshotPath}` : ''} alt="" />
+                    <img src={company.screenshotPath ? `http://localhost:9000/image/${company.screenshotPath}` : ''} alt="" />
                 </div>
             </div>
 
