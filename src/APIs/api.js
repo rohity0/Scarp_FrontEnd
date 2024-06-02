@@ -3,7 +3,7 @@ import axios from "axios";
 export const scrapData = async (data) => {
   try {
     console.log(data);
-    let url = `https://scraper-backend-14fb.onrender.com/scrap`;
+    let url = `http://localhost:9000/scrap`;
     let response = await axios({
       url: url,
       data: data,
@@ -18,7 +18,7 @@ export const scrapData = async (data) => {
 export const fetchData = async (data) => {
   try {
     console.log(data);
-    let url = `https://scraper-backend-14fb.onrender.com/list`;
+    let url = `http://localhost:9000/list`;
     let response = await axios({
       url: url,
       method: "Get",
@@ -31,7 +31,7 @@ export const fetchData = async (data) => {
 
 export const deleteData = async (data) => {
   try {
-    let url = `https://scraper-backend-14fb.onrender.com/delete`;
+    let url = `http://localhost:9000/delete`;
     let response = await axios({
       url: url,
       method: "Post",
@@ -45,7 +45,7 @@ export const deleteData = async (data) => {
 
 export const fetchDataById = async (id) => {
   try {
-    let url = `https://scraper-backend-14fb.onrender.com/get/${id}`;
+    let url = `http://localhost:9000/get/${id}`;
     let response = await axios({
       url: url,
       method: "Get",
