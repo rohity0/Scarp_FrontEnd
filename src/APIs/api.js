@@ -2,8 +2,8 @@ import axios from "axios";
 
 export const scrapData = async (data) => {
   try {
-    console.log(data);
-    let url = `http://localhost:9000/scrap`;
+
+    let url = `${process.env.REACT_APP_URL}/scrap`;
     let response = await axios({
       url: url,
       data: data,
@@ -15,10 +15,9 @@ export const scrapData = async (data) => {
   }
 };
 
-export const fetchData = async (data) => {
+export const fetchData = async (currentPage, limit = 10) => {
   try {
-    console.log(data);
-    let url = `http://localhost:9000/list`;
+    let url = `${process.env.REACT_APP_URL}/list?page=${currentPage}&limit=${limit}`;
     let response = await axios({
       url: url,
       method: "Get",
@@ -31,10 +30,10 @@ export const fetchData = async (data) => {
 
 export const deleteData = async (data) => {
   try {
-    let url = `http://localhost:9000/delete`;
+    let url = `${process.env.REACT_APP_URL}/delete`;
     let response = await axios({
       url: url,
-      method: "Post",
+      method: "put",
       data: data,
     });
     return response;
@@ -45,7 +44,7 @@ export const deleteData = async (data) => {
 
 export const fetchDataById = async (id) => {
   try {
-    let url = `http://localhost:9000/get/${id}`;
+    let url = `${process.env.REACT_APP_URL}/get/${id}`;
     let response = await axios({
       url: url,
       method: "Get",

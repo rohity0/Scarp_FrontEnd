@@ -5,18 +5,24 @@ import * as XLSX from 'xlsx';
 import { useEffect, useState } from "react";
 import { deleteData, fetchData } from "../APIs/api";
 import { Cards } from "./Card"
+import Pagination from "./paginations";
+
 export const HomePage = () => {
     const [data, setData] = useState([{}])
     const [selectedIds, setSelectedIds] = useState([]);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalItems, setTotalItems] = useState(0);
+    const itemsPerPage = 10;
 
     useEffect(() => {
-        fetchData().then((res) => {
+        fetchData(currentPage).then((res) => {
             setData(res.data.data);
+            setCurrentPage(res.data.meta.page);
+            setTotalItems(res.data.meta.total);
         }).catch(err => {
             console.error(err)
         })
-    }, [])
+    }, [currentPage])
 
     const handleCheckboxChange = (id, isChecked) => {
         setSelectedIds(prevIds => {
@@ -33,7 +39,7 @@ export const HomePage = () => {
             deleteId: selectedIds
         })
         setSelectedIds([])
-        fetchData().then((res) => {
+        fetchData(1).then((res) => {
             setData(res.data.data);
         })
     }
@@ -45,13 +51,18 @@ export const HomePage = () => {
         XLSX.writeFile(workbook, 'companies.xlsx');
     };
 
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+
     return (
         <>
-            < Navbar setData={setData} />
+            < Navbar setData={setData} currentPage={currentPage} />
             <div className={styles.tableBody}>
                 <div className={styles.tableHeader}>
                     <p> {selectedIds.length} selected</p>
-                    <div>
+                    <div className={styles.selectedIds}>
                         <button onClick={handleDelete}>Delete</button>
                         <div className={styles.exportCSV}>
                             <ImParagraphLeft className={styles.exportCSVIcon} />
@@ -78,8 +89,13 @@ export const HomePage = () => {
 
                     ))}
                 </div>
-
+                <Pagination
+                    currentPage={currentPage}
+                    totalItems={totalItems}
+                    itemsPerPage={itemsPerPage}
+                    onPageChange={handlePageChange} />
             </div>
+
         </>
     )
 }

@@ -7,7 +7,7 @@ export const Cards = ({ company, onCheckboxChange }) => {
     const handleChange = (e) => {
         onCheckboxChange(company._id, e.target.checked);
     };
-   
+
     return (
         <>
             <div className={styles.tableRow}>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { fetchData, scrapData } from "../APIs/api";
 
 
-export const Navbar = ({ setData }) => {
+export const Navbar = ({ setData, currentPage }) => {
     const [scrap, setScrap] = useState("")
 
     const urlData = async () => {
@@ -12,7 +12,7 @@ export const Navbar = ({ setData }) => {
         setScrap("")
         scrapData({
             urls: [data]
-        }).then(() => fetchData().then((res) => setData(res.data.data)))
+        }).then(() => fetchData(currentPage).then((res) => setData(res.data.data)))
     }
 
 

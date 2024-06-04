@@ -70,12 +70,12 @@ export const WebSitePage = () => {
 
 
                 </div>
-                <div>
+                <div className={styles.screenshot}>
                     <h4>
                         <FaCamera />  Screenshot of Webpage
                     </h4>
 
-                    <img src={company.screenshotPath ? `http://localhost:9000/image/${company.screenshotPath}` : ''} alt="" />
+                    <img src={company.screenShotUrl ? `${company.screenShotUrl}` : ''} alt="" />
                 </div>
             </div>
 
